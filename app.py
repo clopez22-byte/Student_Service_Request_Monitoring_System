@@ -18,7 +18,7 @@ def load_default_data():
     return pd.read_csv(ROOT / "student_service_requests.csv")
 
 def get_data():
-   
+    uploaded = st.sidebar.file_uploader("Upload student_service_requests.csv", type=["csv"])
     if uploaded is not None:
         try:
             incoming = pd.read_csv(uploaded)
