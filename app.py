@@ -16,7 +16,8 @@ def get_model():
 @st.cache_data
 def load_default_data():
     return pd.read_csv(ROOT / "student_service_requests.csv")
-    def get_data():
+
+def get_data():
     uploaded = st.sidebar.file_uploader("Upload student_service_requests.csv", type=["csv"])
     if uploaded is not None:
         try:
@@ -37,8 +38,7 @@ def load_default_data():
         return None
     return prepare_dataset(default)
 
-
-st.sidebar.title("🎓 Student Services Monitoring System")
+st.sidebar.title("🎓 Student Services")
 page = st.sidebar.selectbox("Navigation", ["Home", "Dataset", "Data Analysis", "Prediction", "Dashboard", "System Design"])
 st.sidebar.caption("Section B | Systems Analysis and Design")
 df = get_data()
