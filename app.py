@@ -18,7 +18,7 @@ def load_default_data():
     return pd.read_csv(ROOT / "student_service_requests.csv")
 
 def get_data():
-    uploaded = st.sidebar.file_uploader("Upload student_service_requests.csv", type=["csv"])
+   
     if uploaded is not None:
         try:
             incoming = pd.read_csv(uploaded)
@@ -40,7 +40,7 @@ def get_data():
 
 st.sidebar.title("🎓 Student Services")
 page = st.sidebar.selectbox("Navigation", ["Home", "Dataset", "Data Analysis", "Prediction", "Dashboard", "System Design"])
-st.sidebar.caption("Section B | Systems Analysis and Design")
+st.sidebar.caption("Systems Analysis and Design")
 df = get_data()
 
 if page == "Home":
