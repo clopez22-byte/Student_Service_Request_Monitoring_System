@@ -29,23 +29,5 @@ A decision-support application for monitoring student service requests and estim
 - F1-score: 0.6000
 - Confusion matrix: [[26, 10], [6, 12]]
 
-## Run locally
-1. Install Python 3.11–3.13.
-2. Extract this ZIP file.
-3. Open a terminal in the extracted project folder.
-4. Create and activate a virtual environment (optional but recommended):
-   - Windows: `py -3.13 -m venv .venv`
-   - Windows activation: `.venv\\Scripts\\activate`
-5. Install dependencies: `python -m pip install -r requirements.txt`
-6. Run: `streamlit run app.py`
-
-The supplied CSV is included as the default dataset. You may upload another CSV with the same required schema from the sidebar.
-
-## Deploy to Streamlit Community Cloud
-1. Create a GitHub repository.
-2. Upload the contents of this project folder, keeping the `modules`, `models`, and `assets` folders intact.
-3. In Streamlit Community Cloud, create an app, select the repository and `main` branch, and set the main file path to `app.py`.
-4. Deploy and test every navigation page.
-
 ## Important limitations
 The model is trained from historical completed requests because only those records have a known SLA outcome. Predictions for new/open requests are advisory and may not generalize well. The supplied UML image is included as the System Design diagram. Use synthetic or authorized data only. Do not use predictions to automatically deny student services.
