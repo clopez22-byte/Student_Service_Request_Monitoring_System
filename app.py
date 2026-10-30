@@ -16,6 +16,27 @@ def get_model():
 @st.cache_data
 def load_default_data():
     return pd.read_csv(ROOT / "student_service_requests.csv")
+    def get_data():
+    uploaded = st.sidebar.file_uploader("Upload student_service_requests.csv", type=["csv"])
+    if uploaded is not None:
+        try:
+            incoming = pd.read_csv(uploaded)
+            ok, message = validate_dataset(incoming)
+            if not ok:
+                st.error(message)
+                return None
+            st.sidebar.success("Uploaded dataset validated.")
+            return prepare_dataset(incoming)
+        except Exception as exc:
+            st.error(f"Unable to read CSV: {exc}")
+            return None
+    default = load_default_data()
+    ok, message = validate_dataset(default)
+    if not ok:
+        st.error(message)
+        return None
+    return prepare_dataset(default)
+
 
 st.sidebar.title("🎓 Student Services Monitoring System")
 page = st.sidebar.selectbox("Navigation", ["Home", "Dataset", "Data Analysis", "Prediction", "Dashboard", "System Design"])
